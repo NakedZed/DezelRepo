@@ -42,11 +42,6 @@ app.get('/Users', (req, res) => {
   res.status(400).send(e)
 })
 ////////////////////////////////////////////////
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
->>>>>>> a0c7203a85d4b134b1ffe74024542206d585e532
 app.get('/Users/:id', (req, res) => {
 
   var id = req.params.id;
@@ -55,7 +50,6 @@ app.get('/Users/:id', (req, res) => {
     return res.status(404).send()
   }
   User.findById(id).then((user)=>{
-<<<<<<< HEAD
 
     res.send(user);
   },(err)=>{
@@ -63,43 +57,6 @@ app.get('/Users/:id', (req, res) => {
     res.status(404).send();
   })
 });
-app.get('/Users/:id', (req, res) => {
-
-  var id = req.params.id;
-  if (!ObjectID.isValid(id)) //Checking the validation of the id from the user
-  {
-    return res.status(404).send()
-  }
-  User.findById(id).then((user)=>{
-=======
->>>>>>> a0c7203a85d4b134b1ffe74024542206d585e532
-
-    res.send(user);
-  },(err)=>{
-
-    res.status(404).send();
-  })
-});
-<<<<<<< HEAD
-=======
-=======
-// app.get('/Users/:id', (req, res) => {
-//
-//   var id = req.params.id;
-//   if (!ObjectID.isValid(id)) //Checking the validation of the id from the user
-//   {
-//     return res.status(404).send()
-//   }
-//   User.findById(id).then((user)=>{
-//
-//     res.send(user);
-//   },(err)=>{
-//
-//     res.status(404).send();
-//   })
-// });
->>>>>>> 5e3933a1d2d665b7e80001e3bb82c81db9ff3371
->>>>>>> a0c7203a85d4b134b1ffe74024542206d585e532
 
 /////////////////////////////////////////////////////
 app.listen(port, () => { //listening to the port
