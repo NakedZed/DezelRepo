@@ -4,7 +4,8 @@ var mongoose = require('mongoose'); //Requiring mongoose model
 
 //////////////////////////////////////////////////////////////
 mongoose.Promise = global.Promise; //MongoDB configuration
-mongoose.connect('mongodb://localhost:27017/dezelDB');
+mongoose.connect(process.env.MONGODB_URI||'mongodb://localhost:27017/dezelDB');//To use the DB hosted on mlab if it doesnt exist
+//we use the local one"dezelDB"
 ////////////////////////////////////////////////////////////
 
 module.exports = {
