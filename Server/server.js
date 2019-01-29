@@ -10,6 +10,9 @@ var {
 var {
   User
 } = require('./models/Users')
+var {
+  Car
+} = require('./models/Cars')
 
 var app = express();
 app.use(bodyParser.json()); //configuring bodyparser middleware to get the body of the request.
@@ -19,29 +22,29 @@ const port = process.env.PORT||3000   //This port variable will be set if the ap
 
 //Handling post Route for adding a todo
 ///////////////////////////////////////
-app.post('/Users', (req, res) => {
-  var User1 = new User({
-    name: req.body.name,
-    email: req.body.email
-  })
+app.post('/Cars', (req, res) => {
+  var Car1 = new Car({
+    make: req.body.make,
+    model: req.body.model
+  }) 
 
-  User1.save().then((user) => { //Saving the user to the dezelDB
+  Car1.save().then((car) => { //Saving the user to the dezelDB
 
-    res.send(user)
+    res.send(car)
 
   }, (err) => {
-    console.log('something went wrong')
+    console.log('Unable to save the car')
   });
 })
 //////////////////////////////////////////
-app.get('/Users', (req, res) => {
-  User.find().then((user) => {
-    res.send(user);
+app.get('/Cars', (req, res) => {
+  Car.find().then((car) => {
+    res.send(car);
   })
 }, (err) => {
   res.status(400).send(e)
 })
-////////////////////////////////////////////////
+//////////////////////////////////////////////
 // app.get('/Users/:id', (req, res) => {
 //
 //   var id = req.params.id;
@@ -54,7 +57,7 @@ app.get('/Users', (req, res) => {
 //     res.send(user);
 //   },(err)=>{
 //
-//     res.status(404).send();
+//     res.send();
 //   })
 // });
 
