@@ -42,6 +42,7 @@ app.get('/Users', (req, res) => {
   res.status(400).send(e)
 })
 ////////////////////////////////////////////////
+<<<<<<< HEAD
 app.get('/Users/:id', (req, res) => {
 
   var id = req.params.id;
@@ -57,6 +58,23 @@ app.get('/Users/:id', (req, res) => {
     res.status(404).send();
   })
 });
+=======
+// app.get('/Users/:id', (req, res) => {
+//
+//   var id = req.params.id;
+//   if (!ObjectID.isValid(id)) //Checking the validation of the id from the user
+//   {
+//     return res.status(404).send()
+//   }
+//   User.findById(id).then((user)=>{
+//
+//     res.send(user);
+//   },(err)=>{
+//
+//     res.status(404).send();
+//   })
+// });
+>>>>>>> 5e3933a1d2d665b7e80001e3bb82c81db9ff3371
 
 /////////////////////////////////////////////////////
 app.listen(port, () => { //listening to the port
