@@ -63,15 +63,17 @@ app.get('/Cars', (req, res) => {
 
 /////////////////////////////////////////////////////
 app.delete('/Cars/:id',(req,res)=>{
+
   var id = req.params.id;
   if(!ObjectID.isValid(id))
   {
-     return res.status(404).send()
+     return res.status(404).send();
   }
   Car.findByIdAndRemove(id).then((car)=>{
     if(!car){
-      return res.status(404).send()
+      return res.status(404).send();
     }
+
     res.send(car)
   }).catch((e)=>{
     res.status(404).send();
