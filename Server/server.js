@@ -45,21 +45,24 @@ app.get('/Cars', (req, res) => {
   res.status(400).send(e)
 })
 //////////////////////////////////////////////
-// app.get('/Users/:id', (req, res) => {
-//
-//   var id = req.params.id;
-//   if (!ObjectID.isValid(id)) //Checking the validation of the id from the user
-//   {
-//     return res.status(404).send()
-//   }
-//   User.findById(id).then((user)=>{
-//
-//     res.send(user);
-//   },(err)=>{
-//
-//     res.send();
-//   })
-// });
+app.get('/Cars/:id',(req,res)=>{
+
+  var id = req.params.id;
+  if(!ObjectID.isValid(id))
+  {
+     return res.status(404).send();
+  }
+  Car.findById(id).then((car)=>{
+    if(!car){
+      return res.status(404).send();
+    }
+
+    res.send(car)
+  }).catch((e)=>{
+    res.status(404).send();
+  })
+
+})
 
 /////////////////////////////////////////////////////
 app.delete('/Cars/:id',(req,res)=>{
