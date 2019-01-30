@@ -26,7 +26,7 @@ app.post('/Cars', (req, res) => {
   var Car1 = new Car({
     make: req.body.make,
     model: req.body.model
-  }) 
+  })
 
   Car1.save().then((car) => { //Saving the user to the dezelDB
 
@@ -62,6 +62,25 @@ app.get('/Cars', (req, res) => {
 // });
 
 /////////////////////////////////////////////////////
+app.delete('/Cars/:id',(req,res)=>{
+  var id = req.params.id;
+  if(!ObjectID.isValid(id))
+  {
+     return res.status(404).send()
+  }
+  Car.findByIdAndRemove(id).then((car)=>{
+    if(!car){
+      return res.status(404).send()
+    }
+    res.send(car)
+  }).catch((e)=>{
+    res.status(404).send();
+  })
+
+})
+
+
+////////////////////////////////////////////
 app.listen(port, () => { //listening to the port
   console.log(`Started on port ${port}` )
 });
